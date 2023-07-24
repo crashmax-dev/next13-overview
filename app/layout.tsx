@@ -1,7 +1,8 @@
 import { Montserrat } from 'next/font/google'
+import { clsx } from 'clsx'
 import type { Metadata } from 'next'
 
-import './globals.css'
+import '../style/globals.css'
 
 const inter = Montserrat({ subsets: ['latin', 'cyrillic'] })
 
@@ -17,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={clsx(inter.className, 'dark:bg-gray-900')}>
+        <section className="dark:text-white">
+          <div className="container px-6 py-10 mx-auto">{children}</div>
+        </section>
+      </body>
     </html>
   )
 }

@@ -1,7 +1,19 @@
-export default function Home() {
+import Link from 'next/link'
+
+export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hello World
-    </main>
+    <div>
+      <h1>Navigation</h1>
+      <ul className="list-disc">
+        <li>
+          <Link
+            href="/photos"
+            className="text-white underline"
+          >
+            Photos
+          </Link>
+        </li>
+      </ul>
+    </div>
   )
 }
