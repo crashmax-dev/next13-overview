@@ -3,7 +3,7 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: ['api.slingacademy.com'],
+    domains: ['api.slingacademy.com']
   }
 }
 

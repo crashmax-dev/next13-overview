@@ -1,18 +1,15 @@
-'use client'
-
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 import { clsx } from 'clsx'
 
 interface PaginationProps {
   pages: number
+  current: number
 }
 
 export function Pagination(props: PaginationProps) {
-  const params = useParams()
   const links = Array.from({ length: props.pages }, (_, index) => {
     const pageNumber = index + 1
-    const isActive = params.pagination === `${pageNumber}`
+    const isActive = props.current === pageNumber
 
     return (
       <Link

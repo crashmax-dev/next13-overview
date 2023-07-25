@@ -1,5 +1,5 @@
 export default function Loading() {
-  const skeleton = Array.from({ length: 10 }, (_, index) => (
+  const skeleton = Array.from({ length: 12 }, (_, index) => (
     <div
       className="w-full"
       key={index}

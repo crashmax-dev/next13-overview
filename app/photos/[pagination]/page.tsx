@@ -22,7 +22,7 @@ interface Photo {
 const TOTAL_PAGES = 10
 const PER_PAGE = 12
 
-async function fetchPhotos(offset = 0): Promise<ApiResponse> {
+async function fetchPhotos(offset: number): Promise<ApiResponse> {
   const link = `https://api.slingacademy.com/v1/sample-data/photos?limit=${PER_PAGE}&offset=${
     offset * PER_PAGE
   }`
@@ -37,8 +37,9 @@ interface Props {
 }
 
 export default async function Page(props: Props) {
-  // await new Promise((resolve) => setTimeout(resolve, 1000))
-  const { photos } = await fetchPhotos(Number(props.params.pagination) - 1 ?? 0)
+  // await new Promise((resolve) => setTimeout(resolve, 10000))
+  const currentPage = Number(props.params.pagination) - 1
+  const { photos } = await fetchPhotos(currentPage ?? 0)
   if (!photos || photos.length === 0) notFound()
 
   return (
@@ -60,7 +61,10 @@ export default async function Page(props: Props) {
           </div>
         ))}
       </div>
-      <Pagination pages={TOTAL_PAGES} />
+      <Pagination
+        pages={TOTAL_PAGES}
+        current={Number(props.params.pagination)}
+      />
     </>
   )
 }
